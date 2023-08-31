@@ -92,6 +92,8 @@ export class Templater {
         return content;
     }
 
+    readonly title_regex = new RegExp("Untitled\s?\d*")
+
     async create_new_note_from_template(
         template: TFile | string,
         folder?: TFolder,
@@ -176,10 +178,6 @@ export class Templater {
                 created_note,
                 true
             );
-
-            active_leaf.setEphemeralState({
-                rename: "all",
-            });
         }
 
         return created_note;
